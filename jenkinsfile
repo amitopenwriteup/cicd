@@ -4,7 +4,7 @@ pipeline {
      // adasfddded
         stage('Checkout the Git repository') {
             steps {
-                git branch: 'master', url: ' https://github.com/amitopenwriteup/cicd.git'
+                git branch: 'master', url: ' https://github.com/saptalsunil/cicd.git'
             }
         }
         stage('Build Docker image') {
