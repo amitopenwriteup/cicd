@@ -1,23 +1,19 @@
 pipeline {
-agent any
-stages {
-  stage('Checkout') {
+  agent any
+  stages {
+    stage ('build'} {
+     steps {
+       script {
+          sh 'mkdir -p target'
+          writeFile file: 'target/amit.txt', text: 'Hi this is amit'
+          writeFile file: 'target/amit.md', text: 'Hi this is md file'
+          }
+        }
+      }
+    stage ('archive') {
     steps {
-// Checkout code from the Git repository
-     sh 'echo checking out'
+      archiveArtifacts artifacts: '*.txt', excludes: '*.md', followSymlinks: false
+      }
+     }
    }
   }
-stage('Build') {
-  steps {
-// Build the Java application (replace with your build commands)
-  sh 'javac -version'
- }
-}
-stage('Deploy') {
-  steps {
-  // Deploy the application (replace with your deployment commands)
-   sh 'echo "Deploying the application"'
-   }
-  }
- }
-}
