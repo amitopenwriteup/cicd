@@ -13,6 +13,7 @@ pipeline {
     stage ('archive') {
     steps {
       archiveArtifacts artifacts: '*.txt', excludes: '*.md', followSymlinks: false
+      input 'Do you want proceed?'
       }
      }
    }
